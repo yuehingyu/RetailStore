@@ -69,7 +69,7 @@ public class SaleDocDbDao implements SalesDao {
 		saleItem.setOrder_date(dateFormat.format(date));
 		
 		
-		saleItem.setPurchase_order_number("P"+uuid);		
+		saleItem.setPurchase_order_number(uuid);		
 
 		try {
 
