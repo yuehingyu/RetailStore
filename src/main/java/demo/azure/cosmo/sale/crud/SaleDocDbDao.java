@@ -64,9 +64,11 @@ public class SaleDocDbDao implements SalesDao {
 
 		saleItem.setId(uuid);
 		Date date = Calendar.getInstance().getTime();
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss z");
 		
 		saleItem.setOrder_date(dateFormat.format(date));
+		
+		
 		saleItem.setPurchase_order_number("P"+uuid);		
 
 		try {
