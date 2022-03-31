@@ -31,7 +31,7 @@ public class CosmosClientFactory {
 		System.out.println("MASTER KEY is : " + MASTER_KEY);
 
 		CosmosClient cosmosClient = new CosmosClientBuilder().endpoint(HOST).key(MASTER_KEY)
-				.consistencyLevel(ConsistencyLevel.STRONG).buildClient();
+				.consistencyLevel(ConsistencyLevel.SESSION).buildClient();
 
 		return cosmosClient;
 	}

@@ -16,7 +16,7 @@ import com.azure.cosmos.models.PartitionKey;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
+
 
 import demo.azure.cosmo.common.keys;
 import demo.azure.cosmo.entity.SalesOrder;
@@ -86,8 +86,8 @@ public class SaleDocDbDao implements SalesDao {
 			item = container.upsertItem(saleItem, cosmosItemRequestOptions);
 
 		} catch (CosmosException e) {
-			System.out.println("Error creating Sale item.\n");
-			e.printStackTrace();
+			System.out.printf("Error creating Sale item. %s \n",e.getMessage());
+			
 			return null;
 		}
 
@@ -149,7 +149,7 @@ public class SaleDocDbDao implements SalesDao {
 
 				for (JsonNode item : pageResponse.getElements()) {
 
-					try {
+					try {					
 						saleItems.add(OBJECT_MAPPER.treeToValue(item, SalesOrder.class));
 					} catch (JsonProcessingException e) {
 						if (error_count < error_limit) {
@@ -249,9 +249,7 @@ public class SaleDocDbDao implements SalesDao {
 			}
 
 		} catch (CosmosException e) {
-			// TODO: Something has gone terribly wrong - the app wasn't
-			// able to query or create the collection.
-			// Verify your connection, endpoint, and key.
+			
 			System.out
 					.println("Something has gone terribly wrong - " + "the app wasn't able to create the Database.\n");
 			e.printStackTrace();
@@ -266,9 +264,7 @@ public class SaleDocDbDao implements SalesDao {
 			}
 
 		} catch (CosmosException e) {
-			// TODO: Something has gone terribly wrong - the app wasn't
-			// able to query or create the collection.
-			// Verify your connection, endpoint, and key.
+			
 			System.out
 					.println("Something has gone terribly wrong - " + "the app wasn't able to create the Container.\n");
 			e.printStackTrace();
@@ -289,7 +285,7 @@ public class SaleDocDbDao implements SalesDao {
 		options.setMaxDegreeOfParallelism(maxDegreeOfParallelism);
 		options.setQueryMetricsEnabled(false);
 
-		List<JsonNode> itemList = new ArrayList();
+		List<JsonNode> itemList = new ArrayList<JsonNode>();
 
 		String continuationToken = null;
 		do {

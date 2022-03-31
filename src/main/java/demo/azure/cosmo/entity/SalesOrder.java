@@ -16,6 +16,16 @@ public class SalesOrder {
 	private float total_due;
 	private List<ItemDetails> Items;
 
+	/*
+	 * cosmosdb response information
+	 */
+
+	private String _rid;
+	private String _self;
+	private String _etag;
+	private String _attachment;
+	private String _ts;
+
 	public String getId() {
 		return id;
 	}
@@ -23,10 +33,11 @@ public class SalesOrder {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
+
 	public String getPartyid() {
 		return partyid;
 	}
+
 	public void setPartyid(String partyid) {
 		this.partyid = partyid;
 	}
@@ -93,6 +104,46 @@ public class SalesOrder {
 
 	public void setItems(List<ItemDetails> items) {
 		Items = items;
+	}
+
+	public String get_rid() {
+		return _rid;
+	}
+
+	public void set_rid(String _rid) {
+		this._rid = _rid;
+	}
+
+	public String get_self() {
+		return _self;
+	}
+
+	public void set_self(String _self) {
+		this._self = _self;
+	}
+
+	public String get_etag() {
+		return _etag;
+	}
+
+	public void set_etag(String _etag) {
+		this._etag = _etag;
+	}
+
+	public String get_attachment() {
+		return _attachment;
+	}
+
+	public void set_attachment(String _attachment) {
+		this._attachment = _attachment;
+	}
+
+	public String get_ts() {
+		return _ts;
+	}
+
+	public void set_ts(String _ts) {
+		this._ts = _ts;
 	}
 
 }
