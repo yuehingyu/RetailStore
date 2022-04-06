@@ -29,9 +29,16 @@ public class CosmosClientFactory {
 	
 		System.out.println("HOST is : " + HOST);
 		System.out.println("MASTER KEY is : " + MASTER_KEY);
+		
+		CosmosClient cosmosClient=null;
+		
+		try{
 
-		CosmosClient cosmosClient = new CosmosClientBuilder().endpoint(HOST).key(MASTER_KEY)
+		cosmosClient = new CosmosClientBuilder().endpoint(HOST).key(MASTER_KEY)
 				.consistencyLevel(ConsistencyLevel.SESSION).buildClient();
+		}catch(Exception e) {
+			System.out.printf("Failed connection : %s",e.getMessage());
+		}
 
 		return cosmosClient;
 	}
